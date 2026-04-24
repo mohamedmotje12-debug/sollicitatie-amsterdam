@@ -207,6 +207,9 @@
     line-height: 1.1;
     margin-bottom: 12px;
     letter-spacing: -0.5px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
   }
 
   .hero-subtitle {
@@ -799,20 +802,70 @@
     font-size: 13px;
   }
 
+  /* MOBILE HEADER */
+  .mobile-header {
+    display: none;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: #fff;
+    border-bottom: 1px solid var(--ams-gray-100);
+    padding: 14px 20px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .mobile-header .logo { margin: 0; }
+  .mobile-header .logo-text { font-size: 16px; }
+  .hamburger {
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid var(--ams-gray-200);
+    border-radius: 8px;
+    color: var(--ams-red);
+    font-size: 18px;
+    cursor: pointer;
+  }
+  .hamburger:hover { background: var(--ams-gray-50); }
+  .drawer-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 90;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  body.nav-open .drawer-overlay { display: block; opacity: 1; }
+  body.nav-open { overflow: hidden; }
+
   /* RESPONSIVE */
   @media (max-width: 1024px) {
     .layout { grid-template-columns: 1fr; }
+    .mobile-header { display: flex; }
     .sidebar {
-      position: relative;
-      height: auto;
-      padding: 20px 0;
-      border-right: none;
-      border-bottom: 1px solid var(--ams-gray-100);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 280px;
+      max-width: 85vw;
+      height: 100vh;
+      padding: 24px 0;
+      border-right: 1px solid var(--ams-gray-100);
+      border-bottom: none;
+      z-index: 100;
+      transform: translateX(-100%);
+      transition: transform 0.25s ease;
+      box-shadow: 4px 0 20px rgba(0,0,0,0.1);
       min-width: 0;
     }
+    body.nav-open .sidebar { transform: translateX(0); }
     .main { padding: 24px; min-width: 0; }
-    .hero { padding: 32px 28px; }
-    .hero h1 { font-size: 30px; }
+    .hero { padding: 28px 22px; }
+    .hero h1 { font-size: 26px; }
     .hero-cards { grid-template-columns: repeat(2, 1fr); }
     .card { padding: 28px 24px; }
     .grid-2 { grid-template-columns: 1fr; }
@@ -829,6 +882,21 @@
 </style>
 </head>
 <body>
+
+<header class="mobile-header">
+  <div class="logo">
+    <div class="logo-marks">
+      <div class="logo-x"></div>
+      <div class="logo-x"></div>
+      <div class="logo-x"></div>
+    </div>
+    <div class="logo-text">Gemeente<br>Amsterdam</div>
+  </div>
+  <button class="hamburger" id="navToggle" aria-label="Menu openen" aria-expanded="false">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+</header>
+<div class="drawer-overlay" id="drawerOverlay"></div>
 
 <div class="layout">
 
@@ -1298,6 +1366,18 @@
 
   window.addEventListener('scroll', updateActiveNav);
   updateActiveNav();
+
+  // Mobile nav drawer
+  const navToggle = document.getElementById('navToggle');
+  const drawerOverlay = document.getElementById('drawerOverlay');
+  const sidebarLinks = document.querySelectorAll('.sidebar a');
+  function setNav(open) {
+    document.body.classList.toggle('nav-open', open);
+    if (navToggle) navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  if (navToggle) navToggle.addEventListener('click', () => setNav(!document.body.classList.contains('nav-open')));
+  if (drawerOverlay) drawerOverlay.addEventListener('click', () => setNav(false));
+  sidebarLinks.forEach(a => a.addEventListener('click', () => setNav(false)));
 
   // Set min date to today
   const dateField = document.getElementById('sch-date');
