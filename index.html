@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sollicitatie Gemeente Amsterdam - Mohamed Mohamed</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23EC0000'/%3E%3Cg stroke='white' stroke-width='3' stroke-linecap='square'%3E%3Cline x1='8' y1='8' x2='14' y2='14'/%3E%3Cline x1='14' y1='8' x2='8' y2='14'/%3E%3Cline x1='13' y1='13' x2='19' y2='19'/%3E%3Cline x1='19' y1='13' x2='13' y2='19'/%3E%3Cline x1='18' y1='18' x2='24' y2='24'/%3E%3Cline x1='24' y1='18' x2='18' y2='24'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --ams-red: #EC0000;
+    --ams-red-dark: #B80000;
+    --ams-blue: #004699;
+    --ams-blue-dark: #003370;
+    --ams-black: #000000;
+    --ams-gray-50: #F5F5F5;
+    --ams-gray-100: #E8E8E8;
+    --ams-gray-200: #D1D1D1;
+    --ams-gray-500: #767676;
+    --ams-gray-700: #434343;
+    --text: #1a1a1a;
+    --radius: 8px;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 10px 30px rgba(0,0,0,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--ams-gray-50);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    min-height: 100vh;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    background: #fff;
+    border-right: 1px solid var(--ams-gray-100);
+    padding: 32px 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .sidebar-header { padding: 0 28px 24px; }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .logo-marks { display: flex; flex-direction: column; gap: 3px; }
+
+  .logo-x {
+    width: 22px;
+    height: 22px;
+    position: relative;
+  }
+
+  .logo-x::before, .logo-x::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--ams-red);
+    top: 50%;
+    left: 0;
+    height: 4px;
+    transform-origin: center;
+  }
+  .logo-x::before { transform: translateY(-50%) rotate(45deg); }
+  .logo-x::after { transform: translateY(-50%) rotate(-45deg); }
+
+  .logo-text {
+    font-weight: 800;
+    font-size: 18px;
+    line-height: 1.1;
+    color: var(--ams-red);
+  }
+
+  .sidebar-title {
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .sidebar-meta {
+    font-size: 13px;
+    color: var(--ams-gray-500);
+    line-height: 1.5;
+  }
+
+  .section-label {
+    padding: 0 28px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--ams-gray-500);
+    text-transform: uppercase;
+    margin: 20px 0 10px;
+  }
+
+  .nav-list { list-style: none; }
+
+  .nav-item a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 28px;
+    color: var(--ams-gray-700);
+    text-decoration: none;
+    font-size: 14.5px;
+    font-weight: 500;
+    border-left: 3px solid transparent;
+    transition: all 0.15s ease;
+  }
+
+  .nav-item a i { width: 18px; font-size: 15px; }
+
+  .nav-item a:hover {
+    background: var(--ams-gray-50);
+    color: var(--ams-red);
+  }
+
+  .nav-item.active a {
+    background: #FFF5F5;
+    color: var(--ams-red);
+    border-left-color: var(--ams-red);
+    font-weight: 600;
+  }
+
+  /* MAIN */
+  .main {
+    padding: 32px 48px 64px;
+    max-width: 1200px;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--ams-red) 0%, var(--ams-red-dark) 100%);
+    border-radius: 12px;
+    padding: 44px 48px;
+    color: white;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero-watermark {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.08;
+    font-size: 240px;
+    font-weight: 900;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.15);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    backdrop-filter: blur(10px);
+  }
+
+  .hero h1 {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero-subtitle {
+    font-size: 17px;
+    opacity: 0.95;
+    max-width: 760px;
+    line-height: 1.5;
+    margin-bottom: 32px;
+  }
+
+  .hero-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-card {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+
+  .hero-card-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0.9;
+    margin-bottom: 6px;
+  }
+
+  .hero-card-value {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  /* CARDS */
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 36px 40px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--ams-gray-100);
+    scroll-margin-top: 24px;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--ams-gray-50);
+  }
+
+  .card-icon {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--ams-red), var(--ams-red-dark));
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .card-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+
+  .card-subtitle {
+    font-size: 13px;
+    color: var(--ams-gray-500);
+    margin-top: 2px;
+    font-weight: 500;
+  }
+
+  /* PROFILE */
+  .profile-hero {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 28px;
+    align-items: center;
+    padding: 28px;
+    background: linear-gradient(135deg, #FFF5F5 0%, #FFFFFF 100%);
+    border-radius: 12px;
+    border: 1px solid var(--ams-gray-100);
+    margin-bottom: 24px;
+  }
+
+  .avatar-lg {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 4px #fff, 0 0 0 7px var(--ams-red);
+    flex-shrink: 0;
+  }
+
+  .profile-hero-name {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    margin-bottom: 4px;
+  }
+
+  .profile-hero-role {
+    font-size: 15px;
+    color: var(--ams-gray-700);
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+
+  .profile-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .profile-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--ams-blue);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 500;
+  }
+
+  .profile-links a:hover { text-decoration: underline; }
+
+  .profile-text {
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: var(--ams-gray-700);
+  }
+
+  .profile-text p + p { margin-top: 14px; }
+
+  .highlight-box {
+    background: #FFF5F5;
+    border-left: 4px solid var(--ams-red);
+    padding: 18px 22px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+
+  .highlight-box strong { color: var(--ams-red); }
+
+  /* PILLARS */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 20px;
+  }
+
+  .pillar {
+    padding: 20px;
+    background: var(--ams-gray-50);
+    border-radius: 10px;
+    border-top: 3px solid var(--ams-red);
+  }
+
+  .pillar i {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ams-red);
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .pillar-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .pillar-text {
+    font-size: 13.5px;
+    color: var(--ams-gray-700);
+    line-height: 1.6;
+  }
+
+  /* VACANCY CARD */
+  .vacancy-ref {
+    background: linear-gradient(135deg, #FFF5F5 0%, #fff 100%);
+    border: 1px solid var(--ams-gray-100);
+    border-left: 4px solid var(--ams-red);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .vacancy-ref i {
+    color: var(--ams-red);
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .vacancy-ref-content { flex: 1; }
+
+  .vacancy-ref-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-weight: 700;
+    color: var(--ams-red);
+    margin-bottom: 2px;
+  }
+
+  .vacancy-ref-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .vacancy-ref a {
+    font-size: 13px;
+    color: var(--ams-blue);
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .vacancy-ref a:hover { text-decoration: underline; }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 28px; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: var(--ams-gray-100);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-bottom: 28px;
+  }
+
+  .timeline-item:last-child { padding-bottom: 0; }
+
+  .timeline-dot {
+    position: absolute;
+    left: -24px;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    background: var(--ams-red);
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px var(--ams-red);
+  }
+
+  .timeline-date {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ams-red);
+    background: #FFF5F5;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+
+  .timeline-title {
+    font-size: 16.5px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+
+  .timeline-company {
+    font-size: 14px;
+    color: var(--ams-gray-700);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .timeline-desc {
+    font-size: 14px;
+    color: var(--ams-gray-700);
+    line-height: 1.65;
+  }
+
+  /* GRID */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* SKILLS & LANGUAGES */
+  .skill-list { display: flex; flex-direction: column; gap: 14px; }
+
+  .skill-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .skill-icon {
+    width: 36px;
+    height: 36px;
+    background: #FFF5F5;
+    color: var(--ams-red);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .skill-body { flex: 1; }
+
+  .skill-name {
+    font-size: 14.5px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .skill-level { font-size: 12px; color: var(--ams-gray-500); font-weight: 500; }
+
+  .skill-bar {
+    height: 6px;
+    background: var(--ams-gray-100);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .skill-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--ams-red), var(--ams-red-dark));
+    border-radius: 3px;
+  }
+
+  .lang-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .lang-card {
+    padding: 16px;
+    background: var(--ams-gray-50);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .lang-flag {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--ams-blue);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  .lang-name { font-weight: 600; font-size: 14.5px; }
+  .lang-level { font-size: 12.5px; color: var(--ams-gray-500); }
+
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .contact-card {
+    padding: 18px 20px;
+    background: var(--ams-gray-50);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+    border: 1px solid transparent;
+  }
+
+  .contact-card:hover {
+    background: white;
+    border-color: var(--ams-red);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--ams-red);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+
+  .contact-label {
+    font-size: 12px;
+    color: var(--ams-gray-500);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .contact-value { font-size: 14.5px; font-weight: 600; margin-top: 2px; }
+
+  /* SCHEDULE BOX */
+  .schedule-card {
+    background: linear-gradient(135deg, var(--ams-blue) 0%, var(--ams-blue-dark) 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 36px 40px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .schedule-card::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 240px;
+    height: 240px;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .schedule-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 6px;
+    position: relative;
+  }
+
+  .schedule-header i {
+    width: 44px;
+    height: 44px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  .schedule-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+
+  .schedule-subtitle {
+    font-size: 14.5px;
+    opacity: 0.9;
+    margin-left: 58px;
+    margin-bottom: 24px;
+  }
+
+  .schedule-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    position: relative;
+  }
+
+  .schedule-field { display: flex; flex-direction: column; gap: 6px; }
+
+  .schedule-field label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    opacity: 0.85;
+  }
+
+  .schedule-field input, .schedule-field select {
+    padding: 12px 14px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.12);
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: all 0.15s;
+  }
+
+  .schedule-field input:focus, .schedule-field select:focus {
+    border-color: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.18);
+  }
+
+  .schedule-field input::placeholder { color: rgba(255,255,255,0.6); }
+
+  .schedule-field select option { color: #000; }
+
+  .schedule-full { grid-column: span 2; }
+
+  .schedule-actions {
+    grid-column: span 2;
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+  }
+
+  .schedule-btn {
+    flex: 1;
+    min-width: 200px;
+    background: white;
+    color: var(--ams-blue);
+    border: none;
+    padding: 14px 22px;
+    border-radius: 8px;
+    font-size: 14.5px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.15s;
+    font-family: inherit;
+  }
+
+  .schedule-btn:hover { transform: translateY(-1px); }
+
+  .schedule-btn-secondary {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.4);
+  }
+
+  .schedule-note {
+    grid-column: span 2;
+    font-size: 12.5px;
+    opacity: 0.8;
+    margin-top: 4px;
+  }
+
+  .schedule-note i { margin-right: 6px; }
+
+  /* FOOTER */
+  .page-footer {
+    margin-top: 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--ams-gray-100);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--ams-gray-500);
+    font-size: 13px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar {
+      position: relative;
+      height: auto;
+      padding: 20px 0;
+      border-right: none;
+      border-bottom: 1px solid var(--ams-gray-100);
+      min-width: 0;
+    }
+    .main { padding: 24px; min-width: 0; }
+    .hero { padding: 32px 28px; }
+    .hero h1 { font-size: 30px; }
+    .hero-cards { grid-template-columns: repeat(2, 1fr); }
+    .card { padding: 28px 24px; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .pillars { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .lang-grid { grid-template-columns: 1fr; }
+    .hero-watermark { display: none; }
+    .profile-hero { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+    .schedule-form { grid-template-columns: 1fr; }
+    .schedule-full, .schedule-actions, .schedule-note { grid-column: span 1; }
+    .schedule-subtitle { margin-left: 0; }
+    .vacancy-ref { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <div class="logo-marks">
+          <div class="logo-x"></div>
+          <div class="logo-x"></div>
+          <div class="logo-x"></div>
+        </div>
+        <div class="logo-text">Gemeente<br>Amsterdam</div>
+      </div>
+      <div class="sidebar-title">Sollicitatie</div>
+      <div class="sidebar-meta">Mohamed Mohamed<br>24 april 2026</div>
+    </div>
+
+    <div class="section-label">Inhoud</div>
+    <ul class="nav-list">
+      <li class="nav-item active"><a href="#overview"><i class="fa-solid fa-house"></i>Overzicht</a></li>
+      <li class="nav-item"><a href="#profiel"><i class="fa-solid fa-user"></i>Profiel</a></li>
+      <li class="nav-item"><a href="#motivatie"><i class="fa-solid fa-lightbulb"></i>Motivatie</a></li>
+      <li class="nav-item"><a href="#werkervaring"><i class="fa-solid fa-briefcase"></i>Werkervaring</a></li>
+      <li class="nav-item"><a href="#educatie"><i class="fa-solid fa-graduation-cap"></i>Educatie</a></li>
+      <li class="nav-item"><a href="#vaardigheden"><i class="fa-solid fa-bolt"></i>Vaardigheden</a></li>
+      <li class="nav-item"><a href="#afspraak"><i class="fa-solid fa-calendar-check"></i>Plan een gesprek</a></li>
+      <li class="nav-item"><a href="#contact"><i class="fa-solid fa-envelope"></i>Contact</a></li>
+    </ul>
+
+    <div class="section-label">Extern</div>
+    <ul class="nav-list">
+      <li class="nav-item"><a href="https://werkenbij.amsterdam.nl/vacatures/onderzoeksopdracht-online-communicatie-data-communicatieanalyse-voor-hbo-wo-studenten-2de4099b-c238-43aa-bdfc-d0e844c66d44" target="_blank"><i class="fa-solid fa-file-lines"></i>Bekijk vacature</a></li>
+      <li class="nav-item"><a href="https://www.linkedin.com/in/mohamed-mohamed-a0a0682b4" target="_blank"><i class="fa-brands fa-linkedin"></i>LinkedIn profiel</a></li>
+      <li class="nav-item"><a href="mailto:M.Mohamed1999@outlook.com"><i class="fa-solid fa-paper-plane"></i>E-mail sturen</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <section class="hero" id="overview">
+      <div class="hero-watermark">×××</div>
+      <div class="hero-kicker"><i class="fa-solid fa-location-dot"></i> Sollicitatie · Team Data & Analytics · Directie Communicatie</div>
+      <h1>Onderzoeksopdracht<br>Online Communicatie &amp; Data</h1>
+      <p class="hero-subtitle">Sollicitatie voor de stageopdracht bij team Data &amp; Analytics, waar ik mijn bedrijfskundige achtergrond en analytische drive wil inzetten om de online communicatie van Amsterdam meetbaar effectiever te maken voor alle Amsterdammers.</p>
+
+      <div class="hero-cards">
+        <div class="hero-card">
+          <div class="hero-card-label"><i class="fa-solid fa-user"></i> Naam</div>
+          <div class="hero-card-value">Mohamed Mohamed</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-label"><i class="fa-solid fa-graduation-cap"></i> Studie</div>
+          <div class="hero-card-value">HBO Bedrijfskunde</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-label"><i class="fa-solid fa-location-dot"></i> Woonplaats</div>
+          <div class="hero-card-value">Biddinghuizen</div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-label"><i class="fa-solid fa-calendar"></i> Beschikbaar</div>
+          <div class="hero-card-value">Vanaf september</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VACANCY REFERENCE -->
+    <div class="vacancy-ref">
+      <i class="fa-solid fa-file-lines"></i>
+      <div class="vacancy-ref-content">
+        <div class="vacancy-ref-label">Reactie op vacature CA10060017</div>
+        <div class="vacancy-ref-title">Onderzoeksopdracht Online Communicatie, Data &amp; Communicatieanalyse</div>
+      </div>
+      <a href="https://werkenbij.amsterdam.nl/vacatures/onderzoeksopdracht-online-communicatie-data-communicatieanalyse-voor-hbo-wo-studenten-2de4099b-c238-43aa-bdfc-d0e844c66d44" target="_blank">Open vacature <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+    </div>
+
+    <!-- PROFIEL -->
+    <section class="card" id="profiel">
+      <div class="card-header">
+        <div class="card-icon"><i class="fa-solid fa-user"></i></div>
+        <div>
+          <div class="card-title">Over mij</div>
+          <div class="card-subtitle">Een korte kennismaking</div>
+        </div>
+      </div>
+
+      <div class="profile-hero">
+        <img src="mohamed.jpg" alt="Mohamed Mohamed" class="avatar-lg">
+        <div>
+          <div class="profile-hero-name">Mohamed Mohamed</div>
+          <div class="profile-hero-role">Vierdejaars student HBO Bedrijfskunde · Teamleider bij Nike</div>
+          <div class="profile-links">
+            <a href="mailto:M.Mohamed1999@outlook.com"><i class="fa-solid fa-envelope"></i> M.Mohamed1999@outlook.com</a>
+            <a href="tel:+31640765996"><i class="fa-solid fa-phone"></i> 06-40765996</a>
+            <a href="https://www.linkedin.com/in/mohamed-mohamed-a0a0682b4" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+            <span style="display:inline-flex;align-items:center;gap:6px;color:var(--ams-gray-700);font-size:13.5px;font-weight:500;"><i class="fa-solid fa-location-dot"></i> Biddinghuizen</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-text">
+        <p>Ik ben een gemotiveerde vierdejaars student Bedrijfskunde met een sterke interesse in <strong>data-analyse, procesoptimalisatie en online communicatie</strong>. Tijdens mijn studie heb ik geleerd om bedrijfsprocessen kritisch te bekijken en te verbeteren op basis van cijfers, inzichten en gezond verstand.</p>
+        <p>Naast mijn studie werk ik als teamleider bij Nike, waar ik dagelijks schakel tussen operationele sturing, het coachen van collega's en het bewaken van kwaliteit. Die combinatie van theorie en praktijk geeft mij een goed gevoel voor hoe organisaties écht werken, én voor hoe de boodschap, het kanaal en de ontvanger samen bepalen of iets landt.</p>
+      </div>
+
+      <div class="highlight-box">
+        <strong>In één zin:</strong> Ik ben leergierig, zelfstandig en vind het leuk om complexe data om te zetten in inzichten waar een team morgen al iets mee kan.
+      </div>
+    </section>
+
+    <!-- MOTIVATIE -->
+    <section class="card" id="motivatie">
+      <div class="card-header">
+        <div class="card-icon"><i class="fa-solid fa-lightbulb"></i></div>
+        <div>
+          <div class="card-title">Waarom deze opdracht</div>
+          <div class="card-subtitle">Motivatie voor Team Data &amp; Analytics · Directie Communicatie</div>
+        </div>
+      </div>
+
+      <div class="profile-text">
+        <p>De beschrijving van deze opdracht viel me meteen op: <strong>een multi-channel analyseframework opzetten voor de online communicatiekanalen van Amsterdam</strong>. Precies op het snijvlak waar ik het liefst werk: tussen data, gedrag van mensen en de vraag "werkt deze boodschap eigenlijk wel?". Amsterdam communiceert met ruim 900.000 bewoners, ondernemers en bezoekers; elk procent extra effectiviteit betekent dat duizenden mensen sneller begrijpen welke rechten, diensten of bekendmakingen voor hen van toepassing zijn. Dat maakt het werk niet alleen analytisch interessant, maar ook maatschappelijk betekenisvol.</p>
+
+        <p>Wat me aanspreekt in de drie pijlers (<strong>campagne-analyse, doelgroepanalyse en contentanalyse</strong>) is dat ze alle drie in elkaar grijpen. Je kunt pas goed adviseren welke kanalen bij welke campagne horen als je doelgroepen begrijpt, en je kunt pas echt iets zeggen over content als je weet wie 'm leest en via welk kanaal. Vanuit mijn studie Bedrijfskunde ben ik gewend om dit soort vraagstukken te benaderen: niet vanuit één kanaal, maar vanuit het gehele proces en de eindgebruiker.</p>
+
+        <p>Ik ben eerlijk over waar ik sta: ik heb nog geen diepgaande ervaring met Power BI of Python, maar wel een stevige analytische basis, ruime ervaring met Excel, en een sterke drive om me die tools snel eigen te maken. Mijn achtergrond in de detailhandel, van vakkenvuller bij Lidl en Albert Heijn tot teamleider bij Nike, heeft me geleerd om in veranderlijke omgevingen nuchter te blijven, collega's mee te krijgen en resultaten te laten zien. Precies die combinatie van <strong>zelfstandigheid, proactieve houding en assertiviteit</strong> die bij de opdracht gevraagd wordt, heb ik in de praktijk al geoefend.</p>
+
+        <p>Ik zou mijn afstudeeronderzoek graag in dienst stellen van team Data &amp; Analytics en samen met jullie een framework neerzetten dat niet in een la belandt, maar waar campagnemanagers daadwerkelijk mee gaan werken.</p>
+      </div>
+
+      <div class="pillars">
+        <div class="pillar">
+          <i class="fa-solid fa-bullseye"></i>
+          <div class="pillar-title">Campagne-analyse</div>
+          <div class="pillar-text">Nieuwsbrieven, social, SEO en betaalde kanalen vertalen naar een strategie per campagne, niet per kanaal apart.</div>
+        </div>
+        <div class="pillar">
+          <i class="fa-solid fa-people-group"></i>
+          <div class="pillar-title">Doelgroepanalyse</div>
+          <div class="pillar-text">Bereik en engagement per doelgroep in kaart brengen, zodat je weet welke mix bij welke Amsterdammer past.</div>
+        </div>
+        <div class="pillar">
+          <i class="fa-solid fa-pen-nib"></i>
+          <div class="pillar-title">Contentanalyse</div>
+          <div class="pillar-text">Leesbaarheid, inclusiviteit en vindbaarheid (ook in AI-gestuurde zoekomgevingen) meetbaar maken.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WERKERVARING -->
+    <section class="card" id="werkervaring">
+      <div class="card-header">
+        <div class="card-icon"><i class="fa-solid fa-briefcase"></i></div>
+        <div>
+          <div class="card-title">Werkervaring</div>
+          <div class="card-subtitle">Van vakkenvuller tot teamleider</div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2019 - Heden</div>
+          <div class="timeline-title">Verkoopmedewerker → Teamleider</div>
+          <div class="timeline-company">Nike</div>
+          <div class="timeline-desc">Gestart als verkoopmedewerker en doorgegroeid naar teamleider. Verantwoordelijk voor het aansturen en coachen van collega's, het bewaken van de winkelprestaties en het zorgen voor een sterke klantbeleving. Leer hier elke dag hoe je mensen en processen effectief combineert, én hoe een sterke merkboodschap zich vertaalt naar de werkvloer.</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2016 - 2018</div>
+          <div class="timeline-title">Vakkenvuller / AGF-medewerker</div>
+          <div class="timeline-company">Albert Heijn</div>
+          <div class="timeline-desc">Na een stageperiode een baan aangeboden gekregen. Vervolgens doorgegaan als medewerker op de AGF-afdeling, met verantwoordelijkheid voor versheid, presentatie en voorraadbeheer.</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2013 - 2015</div>
+          <div class="timeline-title">Vakkenvuller</div>
+          <div class="timeline-company">Lidl</div>
+          <div class="timeline-desc">Mijn eerste bijbaan. Hier de basis geleerd van werken in een team, op tempo leveren en met structuur omgaan in een drukke retail-omgeving.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATIE -->
+    <section class="card" id="educatie">
+      <div class="card-header">
+        <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <div>
+          <div class="card-title">Opleiding</div>
+          <div class="card-subtitle">Doorlopend opbouwen naar HBO Bedrijfskunde</div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2022 - Heden</div>
+          <div class="timeline-title">HBO Bedrijfskunde</div>
+          <div class="timeline-company">Vierdejaars student</div>
+          <div class="timeline-desc">Focus op data-analyse, procesoptimalisatie en de rol van techniek binnen organisaties. Leer om bedrijfs- en communicatieprocessen kritisch te bekijken en op basis van cijfers te verbeteren.</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2021 - 2022</div>
+          <div class="timeline-title">MBO 4 Vestigingsmanager Groothandel</div>
+          <div class="timeline-company">Diploma behaald</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2019 - 2021</div>
+          <div class="timeline-title">MBO 3 Commercieel Medewerker</div>
+          <div class="timeline-company">Diploma behaald</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2017 - 2018</div>
+          <div class="timeline-title">MBO 2 Financieel Medewerker</div>
+          <div class="timeline-company">Diploma behaald</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2013 - 2017</div>
+          <div class="timeline-title">Almere College Handel</div>
+          <div class="timeline-company">Diploma behaald</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VAARDIGHEDEN & TALEN -->
+    <section class="grid-2" id="vaardigheden">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+          <div>
+            <div class="card-title">Vaardigheden</div>
+            <div class="card-subtitle">Wat ik meebreng</div>
+          </div>
+        </div>
+
+        <div class="skill-list">
+          <div class="skill-item">
+            <div class="skill-icon"><i class="fa-solid fa-fire"></i></div>
+            <div class="skill-body">
+              <div class="skill-name">Doorzettingsvermogen <span class="skill-level">Sterk</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="width: 95%"></div></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon"><i class="fa-solid fa-users"></i></div>
+            <div class="skill-body">
+              <div class="skill-name">Teamwerk <span class="skill-level">Sterk</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="width: 90%"></div></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon"><i class="fa-solid fa-user-check"></i></div>
+            <div class="skill-body">
+              <div class="skill-name">Zelfstandig werken <span class="skill-level">Sterk</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="width: 88%"></div></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon"><i class="fa-solid fa-hand-sparkles"></i></div>
+            <div class="skill-body">
+              <div class="skill-name">Proactieve houding <span class="skill-level">Sterk</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="width: 88%"></div></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon"><i class="fa-solid fa-user-tie"></i></div>
+            <div class="skill-body">
+              <div class="skill-name">Leidinggeven &amp; coachen <span class="skill-level">Goed</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="width: 82%"></div></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+            <div class="skill-body">
+              <div class="skill-name">Analytisch denken <span class="skill-level">Goed</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="width: 78%"></div></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon"><i class="fa-solid fa-comments"></i></div>
+            <div class="skill-body">
+              <div class="skill-name">Communicatief vaardig <span class="skill-level">Goed</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="width: 80%"></div></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon"><i class="fa-solid fa-robot"></i></div>
+            <div class="skill-body">
+              <div class="skill-name">Kunstmatige intelligentie <span class="skill-level">Nog te ontwikkelen</span></div>
+              <div class="skill-bar"><div class="skill-bar-fill" style="width: 35%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-icon"><i class="fa-solid fa-language"></i></div>
+          <div>
+            <div class="card-title">Talen</div>
+            <div class="card-subtitle">Spreken en schrijven</div>
+          </div>
+        </div>
+
+        <div class="lang-grid">
+          <div class="lang-card">
+            <div class="lang-flag">NL</div>
+            <div>
+              <div class="lang-name">Nederlands</div>
+              <div class="lang-level">Moedertaal</div>
+            </div>
+          </div>
+          <div class="lang-card">
+            <div class="lang-flag">EN</div>
+            <div>
+              <div class="lang-name">Engels</div>
+              <div class="lang-level">Goed</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLAN EEN GESPREK -->
+    <section class="schedule-card" id="afspraak">
+      <div class="schedule-header">
+        <i class="fa-solid fa-calendar-check"></i>
+        <div class="schedule-title">Plan een kennismakingsgesprek</div>
+      </div>
+      <p class="schedule-subtitle">Kies een moment dat schikt. Ik krijg direct een uitnodiging in mijn agenda en bevestig binnen een werkdag.</p>
+
+      <form class="schedule-form" id="scheduleForm" onsubmit="return planMeeting(event)">
+        <div class="schedule-field">
+          <label for="sch-name">Jouw naam</label>
+          <input type="text" id="sch-name" placeholder="Voor- en achternaam" required>
+        </div>
+        <div class="schedule-field">
+          <label for="sch-email">Jouw e-mailadres</label>
+          <input type="email" id="sch-email" placeholder="naam@amsterdam.nl" required>
+        </div>
+        <div class="schedule-field">
+          <label for="sch-date">Datum</label>
+          <input type="date" id="sch-date" required>
+        </div>
+        <div class="schedule-field">
+          <label for="sch-time">Tijd</label>
+          <select id="sch-time" required>
+            <option value="">Kies tijd...</option>
+            <option value="09:00">09:00</option>
+            <option value="09:30">09:30</option>
+            <option value="10:00">10:00</option>
+            <option value="10:30">10:30</option>
+            <option value="11:00">11:00</option>
+            <option value="11:30">11:30</option>
+            <option value="13:00">13:00</option>
+            <option value="13:30">13:30</option>
+            <option value="14:00">14:00</option>
+            <option value="14:30">14:30</option>
+            <option value="15:00">15:00</option>
+            <option value="15:30">15:30</option>
+            <option value="16:00">16:00</option>
+            <option value="16:30">16:30</option>
+          </select>
+        </div>
+        <div class="schedule-field schedule-full">
+          <label for="sch-type">Vorm van gesprek</label>
+          <select id="sch-type">
+            <option value="Videocall (Teams/Zoom)">Videocall (Teams/Zoom)</option>
+            <option value="Op kantoor Amsterdam">Op kantoor Amsterdam</option>
+            <option value="Telefonisch">Telefonisch</option>
+          </select>
+        </div>
+        <div class="schedule-field schedule-full">
+          <label for="sch-notes">Eventueel bericht (optioneel)</label>
+          <input type="text" id="sch-notes" placeholder="Bijv. team, onderwerp of aanvullende vraag">
+        </div>
+        <div class="schedule-actions">
+          <button type="submit" class="schedule-btn"><i class="fa-solid fa-calendar-plus"></i> Voeg toe aan agenda</button>
+          <button type="button" class="schedule-btn schedule-btn-secondary" onclick="sendMeetingMail()"><i class="fa-solid fa-envelope"></i> Verstuur per e-mail</button>
+        </div>
+        <div class="schedule-note"><i class="fa-solid fa-circle-info"></i> De knop "Voeg toe aan agenda" opent Google Calendar met mij als genode. Ik ontvang de uitnodiging zodra je de afspraak opslaat.</div>
+      </form>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="card" id="contact">
+      <div class="card-header">
+        <div class="card-icon"><i class="fa-solid fa-envelope"></i></div>
+        <div>
+          <div class="card-title">Contact</div>
+          <div class="card-subtitle">Graag tot ziens</div>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <a href="mailto:M.Mohamed1999@outlook.com" class="contact-card">
+          <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div>
+            <div class="contact-label">E-mail</div>
+            <div class="contact-value">M.Mohamed1999@outlook.com</div>
+          </div>
+        </a>
+        <a href="tel:+31640765996" class="contact-card">
+          <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+          <div>
+            <div class="contact-label">Telefoon</div>
+            <div class="contact-value">06 - 40 76 59 96</div>
+          </div>
+        </a>
+        <div class="contact-card">
+          <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+          <div>
+            <div class="contact-label">Woonplaats</div>
+            <div class="contact-value">Biddinghuizen</div>
+          </div>
+        </div>
+        <a href="https://www.linkedin.com/in/mohamed-mohamed-a0a0682b4" target="_blank" class="contact-card">
+          <div class="contact-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">mohamed-mohamed-a0a0682b4</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <footer class="page-footer">
+      <div>© 2026 Mohamed Mohamed - Sollicitatie Gemeente Amsterdam</div>
+      <div>Opgesteld op 24 april 2026</div>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  // Active nav item on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navItems = document.querySelectorAll('.nav-item');
+
+  function updateActiveNav() {
+    let current = '';
+    const scrollPos = window.scrollY + 120;
+    sections.forEach(section => {
+      if (scrollPos >= section.offsetTop) current = section.id;
+    });
+    navItems.forEach(item => {
+      item.classList.remove('active');
+      const link = item.querySelector('a');
+      if (link && link.getAttribute('href') === '#' + current) {
+        item.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveNav);
+  updateActiveNav();
+
+  // Set min date to today
+  const dateField = document.getElementById('sch-date');
+  if (dateField) {
+    const today = new Date().toISOString().split('T')[0];
+    dateField.min = today;
+  }
+
+  // Meeting scheduling
+  const MOHAMED_EMAIL = 'M.Mohamed1999@outlook.com';
+
+  function getMeetingData() {
+    const name = document.getElementById('sch-name').value.trim();
+    const email = document.getElementById('sch-email').value.trim();
+    const date = document.getElementById('sch-date').value;
+    const time = document.getElementById('sch-time').value;
+    const type = document.getElementById('sch-type').value;
+    const notes = document.getElementById('sch-notes').value.trim();
+    if (!name || !email || !date || !time) return null;
+    return { name, email, date, time, type, notes };
+  }
+
+  function formatGCalDate(date, time, durationMin = 30) {
+    // date: YYYY-MM-DD, time: HH:MM
+    const start = new Date(`${date}T${time}:00`);
+    const end = new Date(start.getTime() + durationMin * 60000);
+    const fmt = d => d.getUTCFullYear().toString()
+      + String(d.getUTCMonth() + 1).padStart(2, '0')
+      + String(d.getUTCDate()).padStart(2, '0')
+      + 'T'
+      + String(d.getUTCHours()).padStart(2, '0')
+      + String(d.getUTCMinutes()).padStart(2, '0')
+      + '00Z';
+    return fmt(start) + '/' + fmt(end);
+  }
+
+  function planMeeting(e) {
+    e.preventDefault();
+    const d = getMeetingData();
+    if (!d) return false;
+
+    const title = `Kennismakingsgesprek - ${d.name} & Mohamed Mohamed`;
+    const details = [
+      `Sollicitatie: Onderzoeksopdracht Online Communicatie, Data & Communicatieanalyse (CA10060017)`,
+      `Directie Communicatie · Team Data & Analytics`,
+      ``,
+      `Met: ${d.name} (${d.email})`,
+      `Sollicitant: Mohamed Mohamed (${MOHAMED_EMAIL})`,
+      `Vorm: ${d.type}`,
+      d.notes ? `Bericht: ${d.notes}` : '',
+      ``,
+      `Sollicitatiepagina: ${window.location.href}`
+    ].filter(Boolean).join('\n');
+
+    const dates = formatGCalDate(d.date, d.time, 30);
+    const params = new URLSearchParams({
+      action: 'TEMPLATE',
+      text: title,
+      dates: dates,
+      details: details,
+      add: MOHAMED_EMAIL,
+      location: d.type
+    });
+
+    const url = 'https://calendar.google.com/calendar/render?' + params.toString();
+    window.open(url, '_blank');
+    return false;
+  }
+
+  function sendMeetingMail() {
+    const d = getMeetingData();
+    if (!d) {
+      alert('Vul eerst naam, e-mail, datum en tijd in.');
+      return;
+    }
+
+    const subject = `Voorstel kennismakingsgesprek - ${d.date} ${d.time}`;
+    const body = [
+      `Beste Mohamed,`,
+      ``,
+      `Naar aanleiding van je sollicitatie voor de Onderzoeksopdracht Online Communicatie, Data & Communicatieanalyse zou ik graag een kennismakingsgesprek inplannen.`,
+      ``,
+      `Voorstel:`,
+      `• Datum: ${d.date}`,
+      `• Tijd: ${d.time}`,
+      `• Vorm: ${d.type}`,
+      d.notes ? `• Opmerking: ${d.notes}` : '',
+      ``,
+      `Laat me weten of dit schikt.`,
+      ``,
+      `Met vriendelijke groet,`,
+      `${d.name}`,
+      `${d.email}`
+    ].filter(Boolean).join('\n');
+
+    const url = `mailto:${MOHAMED_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = url;
+  }
+</script>
+
+</body>
+</html>
